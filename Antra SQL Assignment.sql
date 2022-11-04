@@ -13,7 +13,7 @@ Use WideWorldImporters
 GO
 
 select c.PrimaryContactPersonID, c.PhoneNumber
-from Application.people as P, sales.Customers as C
+from Application.People as P, sales.Customers as C
 where c.PrimaryContactPersonID = p.PersonID
 AND P.PhoneNumber = C.PhoneNumber;
 
