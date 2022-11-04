@@ -168,7 +168,7 @@ GO
 
 select WSG.StockGroupName,SIP.StockItemID,SIP.QuantityPurchased,SIS.QuantitySold,SIP.QuantityPurchased-SIS.QuantitySold as Remaining
 	 from(
-		 select pol.StockItemID,SUM(pol.ReceivedOuters) as QuantityPurchased
+		 select pol.StockItemID,SUM(pol.ReceivedOuters) as QuantityPu
 		 from Purchasing.PurchaseOrderLines pol 
 		 group by pol.StockItemID) AS SIP
 	  join(
@@ -238,8 +238,8 @@ and JSON_VALUE(CustomFields,'$.CountryOfManufacture')='China';
 Use WideWorldImporters
 GO
 
-select JSON_VALUE(SI.CustomFields,'$.CountryOfManufacture') AS CountryManu, 
-SUM(TB.TotalOrder) AS TotalQuan
+select JSON_VALUE(SI.CustomFields,'$.CountryOfManufacture') AS CountryMa, 
+SUM(TB.TotalOrder) AS Total
 from Warehouse.StockItems SI join TB ON 
 SI.StockItemID = TB.StockItemID 
 group by JSON_VALUE(SI.CustomFields,'$.CountryOfManufacture');
